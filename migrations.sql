@@ -1,0 +1,17 @@
+CREATE TABLE IF NOT EXISTS scheduled_emails (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  recipient VARCHAR(255) NOT NULL,
+  subject VARCHAR(255) DEFAULT '',
+  body TEXT NOT NULL,
+  send_at DATETIME NOT NULL,
+  status ENUM('pending','sent','failed') DEFAULT 'pending',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS logs (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  source VARCHAR(50),
+  level VARCHAR(20),
+  message TEXT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
